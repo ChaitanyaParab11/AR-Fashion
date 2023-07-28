@@ -45,6 +45,8 @@ Please follow the below steps to run this project.
 1. [NodeJS](https://nodejs.org)
 2. [ExpressJS](https://expressjs.org)
 3. [TensorFlow](https://tensorflowjs.com)
+4. [Unity](https://unity.com/download)
+5. [OpenCV](https://sourceforge.net/projects/opencvsharp.mirror/)
 
 ### Dataset Used
 1. [Kaggle Dataset 1](https://kaggle.com/dataset1)
