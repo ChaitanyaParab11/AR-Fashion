@@ -42,12 +42,12 @@ Please follow the below steps to run this project.
 - Project Type : Mini Project
 
 ### Platform, Libraries and Frameworks used
-1. [NodeJS](https://nodejs.org)
-2. [Unity](https://unity.com/download)
-3. [Google Cardboard](https://developers.google.com/cardboard/develop)
-4. [ExpressJS](https://expressjs.org)
-5. [TensorFlow](https://tensorflowjs.com)
-6. [OpenCV](https://sourceforge.net/projects/opencvsharp.mirror/)
+1. [Unity](https://unity.com/download)
+2. [Google Cardboard](https://developers.google.com/cardboard/develop)
+3. [ExpressJS](https://expressjs.org)
+4. [TensorFlow](https://tensorflowjs.com)
+5. [OpenCV](https://sourceforge.net/projects/opencvsharp.mirror/)
+6. [NodeJS](https://nodejs.org)
 
 ### Dataset Used
 1. [Kaggle Dataset 1](https://kaggle.com/dataset1)
