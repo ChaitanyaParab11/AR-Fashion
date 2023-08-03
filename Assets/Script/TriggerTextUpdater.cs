@@ -1,18 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using TMPro;
 
 public class TriggerTextUpdater : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public SaveData sd;
+    public float ValueToAdd = 0;
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (other.CompareTag("Player")) // Check if the collider belongs to the player (you can change the tag accordingly)
+        {
+            sd.totalCost += ValueToAdd;
+        }
     }
 }
