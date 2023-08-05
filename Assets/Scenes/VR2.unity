@@ -687,7 +687,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 57611356}
-        m_MethodName: PlayButton
+        m_MethodName: HitPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1300,7 +1300,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1225916774, guid: 421f38d36955b4473b99800e7cc5ee37, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1250.0001
+      value: 1250
       objectReference: {fileID: 0}
     - target: {fileID: 1596676483, guid: 421f38d36955b4473b99800e7cc5ee37, type: 3}
       propertyPath: m_Name

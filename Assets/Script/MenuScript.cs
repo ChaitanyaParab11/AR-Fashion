@@ -65,4 +65,28 @@ public class MenuScript : MonoBehaviour
     {
         VR_Cam.fieldOfView = 60;
     }
+
+    public void EscapeRoom()
+    {
+        SceneManager.LoadScene(3);
+
+    }
+
+    public void PathFinding()
+    {
+        SceneManager.LoadScene(2);
+
+    }
+
+    public void HitPlay()
+    {
+        SceneManager.LoadScene(4);
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene(0);
+
+    }
+
 }

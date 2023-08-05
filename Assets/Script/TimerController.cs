@@ -1,99 +1,63 @@
 ﻿using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class TimerController : MonoBehaviour
 {
-    public float totalTime = 60f; // Total time for the timer
-    private float currentTime;
-    private bool isTimerRunning = false;
 
-    public TextMeshProUGUI timerText;
-    public AudioSource audioSource;
-    public string timeUpText = "Time's up!";
-    private bool hasPlayedAudio = false;
-    private float restartDelay = 10f;
+    public SaveData sd;
 
-    private float timePassed; // To track the time passed since last second update
-    private int previousSecond; // To store the previous second value
+    public float currentTime = 0f;
+    public float startingTime = 10f;
+    [SerializeField] TextMeshProUGUI countdownText;
+    bool stopTime = false;
 
-    private void Start()
+    void Start()
     {
-        ResetTimer();
+        currentTime = startingTime;
     }
-
-    private void Update()
+    void Update()
     {
-        if (isTimerRunning)
+        if(stopTime == false)
         {
-            currentTime -= Time.deltaTime;
-            timePassed += Time.deltaTime;
+            currentTime -= 1 * Time.deltaTime;
+            countdownText.text = currentTime.ToString("0");
 
-            // Check if one second has passed
-            if (timePassed >= 1f)
+            Debug.Log("Time: " + currentTime);
+
+            if (currentTime <= 0)
             {
-                UpdateTimerText();
-                timePassed = 0f;
+                //YouLoos();
+                currentTime = 0;
+                stopTime = true;
             }
 
-            if (currentTime <= 0f)
+            if (currentTime > 1 && sd.totalCost == 8)
             {
-                currentTime = 0f;
-                if (!hasPlayedAudio)
-                {
-                    PlayAudioAndDisplayText();
-                    hasPlayedAudio = true;
-                }
-            }
-
-            if (currentTime <= -restartDelay)
-            {
-                RestartLevel();
+                YouWin();
+                stopTime = true;
             }
         }
+        
     }
 
-    private void UpdateTimerText()
+
+    void YouWin()
     {
-        if (timerText != null)
-        {
-            int remainingSeconds = Mathf.CeilToInt(currentTime); // Round up the remaining seconds
-            timerText.text = "Time: " + remainingSeconds.ToString();
-        }
+        Debug.Log("You Win");
+        Invoke("ResetLevel", 7);
     }
 
-    private void PlayAudioAndDisplayText()
+    void YouLoos()
     {
-        // Play audio
-        if (audioSource != null)
-        {
-            audioSource.Play();
-        }
-
-        // Display text
-        if (timerText != null)
-        {
-            timerText.text = timeUpText;
-        }
+        Debug.Log("--------->You Loss");
+        Invoke("ResetLevel", 7);
     }
 
-    public void StartTimer()
+    void ResetLevel()
     {
-        isTimerRunning = true;
+        SceneManager.LoadScene(2);
     }
 
-    public void ResetTimer()
-    {
-        currentTime = totalTime;
-        timePassed = 0f;
-        previousSecond = 0;
-        isTimerRunning = false;
-        hasPlayedAudio = false;
-        UpdateTimerText();
-    }
-
-    private void RestartLevel()
-    {
-        // Implement the logic to reset the level here
-        // For example, you can load the current scene or restart the game.
-    }
+    
 }
