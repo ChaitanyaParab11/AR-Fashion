@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tut1.unity
     guid: 8e5d7687d7cc6de428d0f5c7c11291c7
+  - enabled: 1
+    path: Assets/Scenes/Cipher.unity
+    guid: ac1b71008eef75a478bbe5d991f54ac9
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260,
       type: 2}

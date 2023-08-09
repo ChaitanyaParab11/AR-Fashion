@@ -99,4 +99,13 @@ public class MenuScript : MonoBehaviour
         SceneManager.LoadScene(6);
     }
 
+    public void Tut2()
+    {
+        SceneManager.LoadScene(7);
+    }
+    public void ResetLevel()
+    {
+        SceneManager.LoadScene(2);
+    }
+
 }
