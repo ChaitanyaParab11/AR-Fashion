@@ -1,54 +1,46 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class InputText : MonoBehaviour
 {
-    public float maxLookTime = 2.0f; // The time to look at an object to trigger interaction
-    public Image loadCircle; // Reference to the UI Image for the progress circle
+    public LayerMask targetLayer; // Layer to consider for the GameObject
+    public TextMeshProUGUI displayText; // Assign the TextMeshProUGUI component in the Inspector
+    public float lookDuration = 1.0f; // Time in seconds to look at the object
 
-    public float gvrTimer = 0.0f; // Timer for looking at objects
-    public string combinedNames = ""; // String to store combined object names
+    private GameObject currentTarget;
+    private bool hasAddedName;
 
     private void Update()
     {
-        Ray ray = new Ray(transform.position, transform.forward);
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, targetLayer))
         {
-            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Text"))
+            if (hit.collider.gameObject != currentTarget)
             {
-                gvrTimer += Time.deltaTime;
-                float fillAmount = gvrTimer / maxLookTime;
-                loadCircle.fillAmount = fillAmount;
-
-                if (gvrTimer >= maxLookTime)
-                {
-                    AddObjectName(hit.collider.gameObject.name);
-                }
+                currentTarget = hit.collider.gameObject;
+                hasAddedName = false;
             }
-            else
+
+            if (!hasAddedName)
             {
-                gvrTimer = 0.0f;
-                loadCircle.fillAmount = 0.0f;
+                if (Time.time >= lookDuration)
+                {
+                    DisplayObjectName(currentTarget.name);
+                    hasAddedName = true;
+                }
             }
         }
         else
         {
-            gvrTimer = 0.0f;
-            loadCircle.fillAmount = 0.0f;
+            currentTarget = null;
+            hasAddedName = false;
         }
     }
 
-    private void AddObjectName(string name)
+    private void DisplayObjectName(string name)
     {
-        if (!combinedNames.Contains(name))
-        {
-            if (combinedNames != "")
-            {
-                combinedNames += ", ";
-            }
-            combinedNames += name;
-        }
+        displayText.text +=name;
     }
 }

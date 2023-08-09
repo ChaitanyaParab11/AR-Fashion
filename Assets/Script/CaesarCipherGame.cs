@@ -8,6 +8,21 @@ public class CaesarCipherGame : MonoBehaviour
     public int randomShift;
     public TMP_Text originalText;
     public TMP_Text encryptedText;
+    public TMP_Text randomshifttext;
+
+    public TMP_Text InputText;
+    public TimerController tc;
+
+
+    private void Update()
+    {
+        if(randomText == InputText.text && tc.currentTime >1)
+        {
+            tc.WinStatus = 2;
+        }
+
+    }
+
 
     private void Start()
     {
@@ -22,6 +37,7 @@ public class CaesarCipherGame : MonoBehaviour
         randomShift = Random.Range(1, 26); // Random shift between 1 and 25
         encrypted = EncryptCaesarCipher(randomText, randomShift);
         encryptedText.text = encrypted;
+        randomshifttext.text = randomShift.ToString();
     }
 
     private string GenerateRandomString()
@@ -61,4 +77,5 @@ public class CaesarCipherGame : MonoBehaviour
 
         return encrypted;
     }
+
 }

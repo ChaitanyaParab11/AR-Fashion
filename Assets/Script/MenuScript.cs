@@ -89,4 +89,14 @@ public class MenuScript : MonoBehaviour
 
     }
 
+    public void Credit()
+    {
+        SceneManager.LoadScene(5);
+    }
+
+    public void Tut()
+    {
+        SceneManager.LoadScene(6);
+    }
+
 }

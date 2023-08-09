@@ -20,6 +20,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PlayButton.unity
     guid: 3b33d2cb4f4746c40ae75dc7fd53212a
+  - enabled: 1
+    path: Assets/Scenes/CreditScean.unity
+    guid: da09f12425fb60d47b8ee82a9bb9273a
+  - enabled: 1
+    path: Assets/Scenes/Tut1.unity
+    guid: 8e5d7687d7cc6de428d0f5c7c11291c7
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260,
       type: 2}
